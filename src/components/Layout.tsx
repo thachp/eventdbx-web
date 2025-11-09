@@ -79,7 +79,7 @@ function FixedSidebar({
       <Glow />
       <div className="relative flex w-full lg:pointer-events-auto lg:mr-[calc(max(2rem,50%-38rem)+40rem)] lg:min-w-lg lg:overflow-x-hidden lg:overflow-y-auto lg:pl-[max(4rem,calc(50%-38rem))]">
         <div className="mx-auto max-w-lg lg:mx-0 lg:flex lg:w-96 lg:max-w-none lg:flex-col lg:before:flex-1 lg:before:pt-6">
-          <div className="pt-20 pb-16 sm:pt-32 sm:pb-20 lg:py-20">
+          <div className="pt-10 pb-8 sm:pt-16 sm:pb-10 lg:py-10">
             <div className="relative">
               <StarField className="top-14 -right-44" />
               {main}
@@ -102,7 +102,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <ThemeToggle />
         <div className="relative flex-auto">
           <Timeline />
-          <main className="space-y-20 py-20 sm:space-y-32 sm:py-32">
+          <main className="space-y-20 py-10 sm:space-y-32 sm:py-32">
             {children}
           </main>
         </div>

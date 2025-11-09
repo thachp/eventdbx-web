@@ -22,13 +22,12 @@ const tabs = [
       'Use the prebuilt container to keep EventDBX isolated while persisting data on your host.',
     commands: [
       'docker pull thachp/eventdbx:latest',
-      `docker run --name eventdbx --detach \\
-  --publish 7070:7070 --publish 6363:6363 \\
+      `docker run --name eventdbx --detach --publish 6363:6363 \\
   --volume "$PWD/data:/var/lib/eventdbx" \\
   thachp/eventdbx:latest`,
       `docker exec eventdbx sh -c 'cat /var/lib/eventdbx/.eventdbx/cli.token'`,
     ],
-    note: 'Remove the 7070 mapping if you only need the ingestion API on 6363. Use the EventDBX Client SDK in your preferred language to develop your application.',
+    note: 'Use the EventDBX Client SDK in your preferred language to develop your application.',
   },
 ] as const
 
