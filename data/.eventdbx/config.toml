@@ -1,0 +1,29 @@
+port = 7070
+data_dir = "/var/lib/eventdbx/.eventdbx"
+domain = "default"
+cache_threshold = 10000
+data_encryption_key = "/TTIVmYhGgng2fpppoSHLshRiSla4aXJl9VGxUfLmE0="
+created_at = "2025-11-08T12:16:34.357347971Z"
+updated_at = "2025-11-08T20:54:25.577452842Z"
+restrict = "default"
+list_page_size = 10
+page_limit = 1000
+plugin_max_attempts = 10
+verbose_responses = true
+snowflake_worker_id = 0
+
+[plugin_queue.prune]
+done_ttl_secs = 86400
+interval_secs = 300
+
+[socket]
+bind_addr = "0.0.0.0:6363"
+
+[auth]
+issuer = "eventdbx://self"
+audience = "eventdbx-clients"
+private_key = "MFECAQEwBQYDK2VwBCIEIEJzfrhKqZD+z71RD1M70QEioV1ZIJYgRB4RILMEOugOgSEAJlUBBMouc7Rw7Run3YIIM0HHOXZgcM+aZDzeDkmqab4="
+public_key = "JlUBBMouc7Rw7Run3YIIM0HHOXZgcM+aZDzeDkmqab4="
+key_id = "key-20251108121634"
+default_ttl_secs = 3600
+clock_skew_secs = 30

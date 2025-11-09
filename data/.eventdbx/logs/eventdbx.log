@@ -1,0 +1,5 @@
+2025-11-08T12:16:34.361107Z  INFO dbx::commands::cli_token: CLI bootstrap token generated with root privileges at /var/lib/eventdbx/.eventdbx/cli.token
+2025-11-08T12:16:34.380391Z  INFO eventdbx::cli_proxy: CLI Cap'n Proto server listening on 0.0.0.0:6363
+2025-11-08T12:16:34.380705Z  INFO eventdbx::server: Starting EventDBX server on 0.0.0.0:7070 (restrict=default)
+2025-11-08T20:54:25.594767Z  INFO eventdbx::cli_proxy: CLI Cap'n Proto server listening on 0.0.0.0:6363
+2025-11-08T20:54:25.594989Z  INFO eventdbx::server: Starting EventDBX server on 0.0.0.0:7070 (restrict=default)

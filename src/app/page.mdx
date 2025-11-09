@@ -1,0 +1,76 @@
+import { SparkleIcon } from '@/components/SparkleIcon'
+
+export { Layout as default } from '@/components/Layout'
+
+---
+
+![](@/images/deployment.png)
+
+## Free Cloud Database {{ date: '2025-11-10T00:00Z' }}
+
+I focused on making EventDBX available and accessible in the cloud. Users can now run dbx cloud init to register for a free account. This account includes a free 30 MB remote instance on the cloud, created using:
+`dbx cloud create <domain> --region=us-west1`
+
+If additional resources (storage, CPU, or RAM) are needed, users can easily upgrade their instance:
+`dbx cloud upgrade <domain> --plan=(stream|flow|source)`
+
+All user data is hosted securely on Google Cloud Platform (GCP).
+
+### <SparkleIcon /> Improvements
+
+- Cloud deployment: Deploy EventDBX to production on Google Cloud Platform with a single command.
+- Hosting plans: Introduced data hosting tiers — Stream (free), Flow ($30/month), and Source ($149/month).
+- Observability: Added a Prometheus-compatible /metrics endpoint to report traffic and plugin queue health, making EventDBX compatible with Grafana, Datadog, and other monitoring stacks out of the box.
+- Domain-based grouping: Data can now be grouped by domain context and automatically synchronized to the cloud.
+
+---
+
+![](@/images/performance.png)
+
+## Stabilization / Performance Testing {{ date: '2025-10-17T00:00Z' }}
+
+This phase focused on fine-tuning various areas of the system, now called EventDBX — the “X” stands for extra, representing the plugin architecture that allows developers to extend functionality by subscribing to events published through the EventDBX queue system.
+
+The core API interfaces such as REST, GraphQL, and gRPC were decoupled into individual plugins, allowing users to install only what they need. This approach keeps EventDBX lean and focused solely on being the write-side database.
+
+### <SparkleIcon /> Improvements
+
+- Cross-platform CLI: EventDBX is now accessible on Windows, macOS, and Linux with a single command: `npx dbx start`
+- Containerized deployment: A Docker image is now available, making it easy to deploy to GCP, AWS, or Azure in production environments.
+- Performance: Benchmark tests confirm EventDBX is extremely fast compared to traditional database systems.
+- Plugin architecture: The core focuses exclusively on the write-side, while plugins handle read-side operations. The internal queue system includes retry and dead-letter mechanisms to ensure reliable event publishing to custom plugins.
+- Client SDKs: Official client libraries are now available for Go, Python, TypeScript/JavaScript, Java, Rust, and .NET.
+
+---
+
+![](@/images/memory-safe.png)
+
+## Memory-Safe Database {{ date: '2025-03-06T00:00Z' }}
+
+There has been a growing government push for future software systems to be memory-safe, encouraging developers to adopt memory-safe programming languages. I determined that Rust is the best language for developing what is now called EventDB. Rust offers high performance, memory safety, and concurrency safety—three critical traits for a database system. However, learning Rust is challenging; its ownership and borrowing concepts can be difficult to grasp at first.
+
+Building a write database entirely from scratch isn’t practical. Instead, RocksDB, with its Log-Structured Merge (LSM) design, makes perfect sense and aligns naturally with the vision of EventDB as a write-focused database.
+
+### <SparkleIcon /> Improvements
+
+- Replication (non-distributed): EventDB allows sharing schemas and databases between peers without requiring full distributed consensus.
+- Secure at rest / in transit: Communication is protected using the Noise Protocol framework.
+- Passwordless authentication: EventDB uses JWT token-based authentication, eliminating the need to manage user credentials directly.
+- Immutable data: Once written, data cannot be altered or permanently deleted from the system, ensuring a verifiable and tamper-proof history.
+- Schema validation: Supports built-in formats (email, URL, WGS84, and more) with rule blocks for length, range, regex, required fields, and nested properties, along with strict or relaxed enforcement modes.
+
+---
+
+![](@/images/first-release.png 'CQRS (Command Query Responsibility Segregation), Martin Fowler')
+
+## What is a Write Database? {{  date: '2024-11-03T00:00Z' }}
+
+Based on the [CQRS (Command Query Responsibility Segregation)](https://martinfowler.com/bliki/CQRS.html) design pattern, there should be a clear distinction between the write database and the read database.
+
+The write database doesn’t need to scale horizontally, but it should be more than just writing data to disk. It must be flexible, extensible, and secure, with the ability to track every change over time. It should be customer-facing in purpose—built for developers who are creating applications that serve users, not for database administrators who think in CRUD operations.
+
+A write database should encourage task-based thinking rather than CRUD-based thinking. Developers should model actions and outcomes—what the customer is actually trying to accomplish—rather than tables and fields. This shift in mindset helps developers move faster and focus on delivering real value instead of managing data structures.
+
+It should also serve as the source of truth for all systems. This means that while state can change, every change in state must be event-driven and carry a clear, purposeful context.
+
+The project is called EventfulDB. It began as a TypeScript prototype, designed to bridge the gap between analytical systems like BigQuery and event-driven applications. However, while Node.js and TypeScript made it easy to experiment, they are ultimately too slow and too high-level for a true database system—one that demands the performance, safety, and precision of a systems language.
