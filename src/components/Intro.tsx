@@ -83,7 +83,7 @@ export function Intro() {
             <SignUpButton>Sign In or Register</SignUpButton>
           </SignedOut>
           <SignedIn>
-            <UserButton />
+            <UserButton>My Account</UserButton>
           </SignedIn>
         </IconLink>
       </div>
