@@ -8,18 +8,17 @@ export { Layout as default } from '@/components/Layout'
 
 ## Free Cloud Database {{ date: '2025-11-10T00:00Z' }}
 
-I focused on making EventDBX available and accessible in the cloud. Users can now run `dbx cloud init` to register for a free account. This account includes a free 30 MB remote instance on the cloud, created using:
+I focused on making EventDBX available and accessible in the cloud. Users can now run `dbx cloud auth --email <email>` to register for a free account. This account includes a free 100 MB remote instance on the cloud, created using:
 `dbx cloud create <domain> --region=us-west1`
 
-If additional resources (storage, CPU, or RAM) are needed, users can easily upgrade their instance:
-`dbx cloud upgrade <domain> --plan=(free|flow|dedicated)`
+If additional resources (Storage, VCPU, or RAM) are needed, users can easily upgrade their instance:
+`dbx cloud upgrade <domain> --ram <gb> --vcpu <n> --disk <gb>`
 
 All user data is hosted securely on Google Cloud Platform (GCP).
 
 ### <SparkleIcon /> Improvements
 
 - Cloud deployment: Deploy EventDBX to production on Google Cloud Platform with a single command.
-- Hosting plans: Introduced data hosting tiers — Stream (free), Flow ($30/month), and Source ($149/month).
 - Observability: Added a Prometheus-compatible /metrics endpoint to report traffic and plugin queue health, making EventDBX compatible with Grafana, Datadog, and other monitoring stacks out of the box.
 - Domain-based grouping: Data can now be grouped by domain context and automatically synchronized to the cloud.
 - Schema versioning: Schemas now support versioning, activation, publishing, rollback, and diff comparisons between versions.

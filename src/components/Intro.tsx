@@ -52,7 +52,7 @@ export function Intro() {
         </Link>
       </div>
       <h1 className="mt-4 font-display text-4xl/tight font-light text-white">
-        Memory-safe{' '}
+        Immutable{' '}
         <span className="text-sky-300">write-side database system</span>
       </h1>
       <p className="mt-4 text-sm/6 text-gray-300">

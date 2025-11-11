@@ -21,8 +21,7 @@ const monaSans = localFont({
 })
 
 export const metadata: Metadata = {
-  title:
-    'EventDBX - Memory-safe, event-sourced NoSQL write-side database system',
+  title: 'EventDBX - Immutable, event-sourced NoSQL write-side database system',
   description:
     'EventDBX is extremely fast, and it lets you spend less time designing schemas and more time writing the code that drives your application.',
   alternates: {
