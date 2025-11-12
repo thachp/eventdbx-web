@@ -69,7 +69,7 @@ export function Intro() {
           Docs
         </IconLink>
         <IconLink
-          href="https://github.com/thachp/eventdbx"
+          href="https://github.com/eventdbx"
           icon={GitHubIcon}
           className="flex-none"
         >
