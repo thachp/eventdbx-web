@@ -39,7 +39,7 @@ The core API interfaces such as REST, GraphQL, and gRPC were decoupled into indi
 - Containerized deployment: A Docker image is now available, making it easy to deploy to GCP, AWS, or Azure in production environments.
 - Performance: Benchmark tests confirm EventDBX is [extremely fast](https://github.com/thachp/eventdbx-perf/blob/main/reports/_2M_Write.log) compared to traditional database systems.
 - Plugin architecture: The core focuses exclusively on the write-side, while plugins handle read-side operations. The internal queue system includes retry and dead-letter mechanisms to ensure reliable event publishing to custom plugins.
-- Client SDKs: Official client libraries are now available for Go, Python, TypeScript/JavaScript, Java, Rust, and .NET.
+- Client SDKs: Official client libraries are now available for Go, [Python](https://pypi.org/project/eventdbx/), [TypeScript/JavaScript](https://www.npmjs.com/package/eventdbxjs), Java, [Rust](https://crates.io/crates/eventdbx-client), and .NET.
 
 ---
 
